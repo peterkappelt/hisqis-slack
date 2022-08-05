@@ -1,8 +1,7 @@
-FROM python:3.9-alpine
+FROM python:3.9-slim
 
 WORKDIR /usr/src/app
 
-RUN apk add g++ 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
