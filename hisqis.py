@@ -46,6 +46,9 @@ def login(session):
           "fdsa": os.environ["HISQIS_PASSWORD"]
       }
   )
+  login_error_msg = loginp.find_all("span", class_="newSessionMsg")
+  if len(login_error_msg):
+    raise Exception("Anmeldung fehlgeschlagen, stimmen Nutzername und Passwort?")
   targetlink = loginp.find_all(
       "a", class_="auflistung", string=re.compile("Prüfungsbescheinigungen "))
   if len(targetlink) != 1:
